@@ -34,6 +34,7 @@ export function TablaPartidas() {
     setPartidas(partidasOrdenadas);
   };
 
+  //Aca ya esta para agregar partias
   const agregarPartida = () => {
     const nuevaPartida = {
       nick: `Jugador${partidas.length + 1}`,
