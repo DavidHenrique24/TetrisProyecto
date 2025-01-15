@@ -11,8 +11,29 @@ const arrayPartidasInicial = [
   { nick: "Jugador5", puntos: 1350, fecha: "2024-12-05" },
 ];
 
+// Función para ordenar partidas 
+export function ordenarPartidas(array, columna, orden = "asc") {
+  return [...array].sort((a, b) => {
+    if (columna === "puntos" || columna === "fecha") {
+      return orden === "asc"
+        ? a[columna] > b[columna]
+          ? 1
+          : -1
+        : a[columna] < b[columna]
+        ? 1
+        : -1;
+    }
+    return 0;
+  });
+}
+
 export function TablaPartidas() {
   const [partidas, setPartidas] = useState(arrayPartidasInicial);
+
+  const manejarOrden = (columna, orden) => {
+    const partidasOrdenadas = ordenarPartidas(partidas, columna, orden);
+    setPartidas(partidasOrdenadas);
+  };
 
   return (
     <div className="container-fluid">
@@ -21,8 +42,16 @@ export function TablaPartidas() {
         <thead>
           <tr>
             <th>Nick</th>
-            <th>Puntos</th>
-            <th>Fecha</th>
+            <th>
+              Puntos
+              <button onClick={() => manejarOrden("puntos", "asc")}>↑</button>
+              <button onClick={() => manejarOrden("puntos", "desc")}>↓</button>
+            </th>
+            <th>
+              Fecha
+              <button onClick={() => manejarOrden("fecha", "asc")}>↑</button>
+              <button onClick={() => manejarOrden("fecha", "desc")}>↓</button>
+            </th>
           </tr>
         </thead>
         <tbody>
