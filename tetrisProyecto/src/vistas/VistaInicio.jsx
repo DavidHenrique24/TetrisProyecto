@@ -1,5 +1,6 @@
 import React from "react";
 export function VistaInicio() {
+  //Agrego la vista inicio y pongo img en public para q funcione
   return (
     
     <div className="text-light">
