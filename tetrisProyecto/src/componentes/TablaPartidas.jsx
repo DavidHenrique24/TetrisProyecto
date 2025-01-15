@@ -1,5 +1,3 @@
-// src/components/TablaPartidas.jsx
-
 import React, { useState } from "react";
 
 // Array inicial de las partidas
@@ -27,6 +25,7 @@ export function ordenarPartidas(array, columna, orden = "asc") {
   });
 }
 
+// Componente principal
 export function TablaPartidas() {
   const [partidas, setPartidas] = useState(arrayPartidasInicial);
 
@@ -35,22 +34,52 @@ export function TablaPartidas() {
     setPartidas(partidasOrdenadas);
   };
 
+  const agregarPartida = () => {
+    const nuevaPartida = {
+      nick: `Jugador${partidas.length + 1}`,
+      puntos: Math.floor(Math.random() * 2000), // Puntos aleatorios
+      fecha: new Date().toISOString().split("T")[0], // Fecha actual
+    };
+    setPartidas([...partidas, nuevaPartida]);
+  };
+
   return (
     <div className="container-fluid">
       <h2 className="mt-4 mb-5">Tabla de Partidas</h2>
+      <button onClick={agregarPartida}>Agregar Partida</button>
       <table className="table table-striped">
         <thead>
           <tr>
             <th>Nick</th>
             <th>
               Puntos
-              <button onClick={() => manejarOrden("puntos", "asc")}>↑</button>
-              <button onClick={() => manejarOrden("puntos", "desc")}>↓</button>
+              <button
+                className="btn btn-link"
+                onClick={() => manejarOrden("puntos", "asc")}
+              >
+                ↑
+              </button>
+              <button
+                className="btn btn-link"
+                onClick={() => manejarOrden("puntos", "desc")}
+              >
+                ↓
+              </button>
             </th>
             <th>
               Fecha
-              <button onClick={() => manejarOrden("fecha", "asc")}>↑</button>
-              <button onClick={() => manejarOrden("fecha", "desc")}>↓</button>
+              <button
+                className="btn btn-link"
+                onClick={() => manejarOrden("fecha", "asc")}
+              >
+                ↑
+              </button>
+              <button
+                className="btn btn-link"
+                onClick={() => manejarOrden("fecha", "desc")}
+              >
+                ↓
+              </button>
             </th>
           </tr>
         </thead>
