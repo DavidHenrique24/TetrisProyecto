@@ -1,13 +1,11 @@
-import VistaInicio from "./vistas/VistaInicio.jsx";
 import "./index.css"
-import TablaPartidas from "./vistas/Partidas.jsx";
+import  { VistaPartidas } from "./vistas/VistaPartidas.jsx";
 function App() {
   return (
     <div className="App">
        
-     
-      <VistaInicio />
-      <TablaPartidas />
+    
+      <VistaPartidas />
 
     </div>
   );
