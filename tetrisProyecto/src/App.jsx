@@ -1,10 +1,11 @@
-import VistaJuego from "./vistas/VistaJuego.jsx";
+
+import VistaRanking from "./vistas/VistaRanking.jsx";
 
 
 function App() {
   return (
    <div>
-     < VistaJuego />
+     < VistaRanking/>
    </div>
   );
 }

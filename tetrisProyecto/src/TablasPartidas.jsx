@@ -117,7 +117,6 @@ export function TablaPartidas() {
               <td>
                 <img 
                   src={partida.imagen} 
-                  alt={`Perfil de ${partida.nick}`} 
                   style={{ width: "50px", height: "50px", borderRadius: "50%" }} 
                 />
               </td>
