@@ -18,6 +18,7 @@ function App() {
         <Route path="/ranking" element={<VistaRanking />} />
       </Routes>
     </Router>
+
   );
 }
 
