@@ -1,13 +1,11 @@
-import "./index.css"
-import  { VistaPartidas } from "./vistas/VistaPartidas.jsx";
+import VistaJuego from "./vistas/VistaJuego.jsx";
+
+
 function App() {
   return (
-    <div className="App">
-       
-    
-      <VistaPartidas />
-
-    </div>
+   <div>
+     < VistaJuego />
+   </div>
   );
 }
 
