@@ -1,11 +1,11 @@
 import React from "react";
-export function VistaPartidas() {
+export function VistaJuego() {
   return (
     <div className="text-light">
       <header className="d-flex align-items-center justify-content-center">
       <img src="/img/logo.png" alt="logo" width="200" className="mt-5" />
       </header>
-      
+
     <div id="juego" className="d-none">
       <div className="row">
         <div className="col-4 d-flex flex-column justify-content-end align-items-center p-5">
@@ -85,4 +85,4 @@ export function VistaPartidas() {
   );
 }
 
-export default VistaPartidas;
+export default VistaJuego;
