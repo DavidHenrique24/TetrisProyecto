@@ -1,5 +1,5 @@
 import React from "react";
-import TablaPartidas from "../TablasPartidas";
+import TablaPartidas from "../componentes/TablasPartidas";
 
 
 export function VistaPartidas() {
