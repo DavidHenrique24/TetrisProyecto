@@ -34,7 +34,6 @@ const arrayPartidasInicial = [
   },
 ];
 
-// Función para ordenar partidas
 export function ordenarPartidas(array, columna, orden = "asc") {
   return [...array].sort((a, b) => {
     if (columna === "puntos" || columna === "fecha") {
