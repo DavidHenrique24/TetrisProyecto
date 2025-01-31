@@ -1,12 +1,14 @@
 import React from "react";
 
-export const Pieza = ({ pieza }) => {
+const Pieza = ({ matrizPieza }) => {
   return (
-    <div>
-      {pieza.map((fila, idFila) => (
-        <div key={idFila} className="d-flex">
-          {fila.map((casilla, idCasilla) => (
-            <div key={idCasilla}></div>
+    <div className="pieza mt-3">
+      {matrizPieza.map((fila) => (
+        <div className="fila d-flex">
+          {fila.map((casilla) => (
+            <div className={`celda bg-white border border-dark"}`}style={{ width: "30px", height: "30px" }}>
+              {casilla}
+            </div>
           ))}
         </div>
       ))}

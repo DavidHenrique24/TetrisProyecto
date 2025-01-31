@@ -5,14 +5,14 @@ import Pieza from "../componentes/Pieza";
 
 const Juego = () => {
   const [arrayCasillas, setArrayCasillas] = useState(modelos.matriz);
+  const matrizPieza = modelos.piezas[0].matriz[0];  //para ubicar la pieza que queremos mostrar
 
   return (
-    <div className="d-flex justify-content-center align-items-center">
+    <div className="d-flex flex-column justify-content-between align-items-center">
       <Panel arrayCasillas={arrayCasillas} />
-      <Pieza pieza = {pieza} />
-
-      <Pieza pieza={nuevaPieza(0, 4).matriz} />
-      <Pieza pieza={nuevaPieza(4, 4).matriz} />
+      <div>
+        <Pieza matrizPieza={matrizPieza} />
+      </div>
     </div>
   );
 };

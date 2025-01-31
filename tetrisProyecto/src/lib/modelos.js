@@ -24,7 +24,7 @@ export const modelos = {
       [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   ],
-      piezas: [
+    piezas: [
         {
           nombre: "L",
           matriz: [
