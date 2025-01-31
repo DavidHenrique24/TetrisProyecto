@@ -5,7 +5,7 @@ import Pieza from "../componentes/Pieza";
 
 const Juego = () => {
   const [arrayCasillas, setArrayCasillas] = useState(modelos.matriz);
-  const matrizPieza = modelos.piezas[0].matriz[0];  //para ubicar la pieza que queremos mostrar
+  const matrizPieza = modelos.piezas[6].matriz[3];  //para ubicar la pieza que queremos mostrar
 
   return (
     <div className="d-flex flex-column justify-content-between align-items-center">

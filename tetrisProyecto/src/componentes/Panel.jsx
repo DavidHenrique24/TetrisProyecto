@@ -1,4 +1,5 @@
 import React from "react";
+import { colorPieza } from "../lib/colores.js"; 
 
 const Panel = ({ arrayCasillas }) => {
   return (
@@ -6,7 +7,10 @@ const Panel = ({ arrayCasillas }) => {
       {arrayCasillas.map((fila) => (
         <div className="fila d-flex">
           {fila.map((casilla) => (
-            <div className={`celda bg-white border border-dark`} style={{ width: "30px", height: "30px" }}>
+            <div
+              className={`celda ${colorPieza(casilla)} border border-dark`} 
+              style={{ width: "30px", height: "30px" }}
+            >
               {casilla}
             </div>
           ))}
