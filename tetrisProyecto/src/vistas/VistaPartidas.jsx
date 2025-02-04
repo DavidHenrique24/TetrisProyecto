@@ -10,6 +10,7 @@ export function VistaPartidas() {
       </header>
       <main className="container mt-5 bg-opacity-50 bg-dark p-2">
         <TablaPartidas />
+        
       </main>
     </div>
   );
