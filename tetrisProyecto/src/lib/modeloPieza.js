@@ -1,5 +1,4 @@
-
-export class modeloPieza {
+class modeloPieza {
     constructor(numero, nombre, angulo, fila, columna, matriz) {
         this.numero = numero;
         this.nombre = nombre;
