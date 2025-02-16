@@ -1,88 +1,57 @@
-import React from "react";
-export function VistaJuego() {
+import React, { useState } from "react";
+import { nuevaPieza } from "../lib/nuevaPieza";  // Importar nuevaPieza
+import Panel from "../componentes/Panel";
+import Pieza from "../componentes/Pieza";
+import { modelos } from "../lib/modelos";  
+
+const Juego = () => {
+  const [arrayCasillas, setArrayCasillas] = useState(modelos.matriz);  // Estado para el panel
+  const [piezaActual, setPiezaActual] = useState(nuevaPieza());  // Estado para la pieza actual
+
+  // Función para generar una columna aleatoria dentro del rango permitido
+  const generarColumnaAleatoria = () => {
+    const columnaAleatoria = Math.floor(Math.random() * 8) + 1; 
+    
+    return columnaAleatoria;
+  };
+
+  // Función para insertar la pieza en el panel
+  const pintarPieza = () => {
+    if (!piezaActual) return; // Si no hay pieza actual, no hacer nada
+
+    const nuevoPanel = [...arrayCasillas]; // Copiar el panel actual
+    const { matriz } = piezaActual; // Obtener la matriz de la pieza actual
+
+    // Insertar la pieza en el panel en la fila 0 y la columna aleatoria
+    for (let i = 0; i < matriz.length; i++) {
+      for (let j = 0; j < matriz[i].length; j++) {
+        if (matriz[i][j] !== 0) { // Solo insertamos si la casilla no es 0
+          nuevoPanel[i][piezaActual.columna + j] = matriz[i][j];
+        }
+      }
+    }
+    setArrayCasillas(nuevoPanel); // Actualizamos el panel con la nueva pieza
+  };
+
+  // Función para insertar una nueva pieza
+  const insertaNuevaPieza = () => {
+    // Crear una nueva pieza con fila 0 y columna aleatoria
+    const nueva = nuevaPieza();
+    nueva.columna = generarColumnaAleatoria();  // Asignamos la columna aleatoria
+    setPiezaActual(nueva);  // Actualizamos el estado con la nueva pieza
+    pintarPieza();  // Insertar la pieza en el panel
+  };
+
   return (
-    <div className="text-light">
-      <header className="d-flex align-items-center justify-content-center">
-      <img src="/img/logo.png" alt="logo" width="200" className="mt-5" />
-      </header>
+    <div className="d-flex flex-column justify-content-between align-items-center">
+      <Panel arrayCasillas={arrayCasillas} />
 
-    <div id="juego" className="d-none">
-      <div className="row">
-        <div className="col-4 d-flex flex-column justify-content-end align-items-center p-5">
-          <h4>Nivel: <span>2</span></h4>
-          <h4>Tiempo: <span>5:22</span></h4>
-          <h4>Lineas: <span>2</span></h4>
-          <h4>Puntos: <span>211122</span></h4>
-        </div>
+      {/* Botón para insertar la nueva pieza */}
+      <button onClick={insertaNuevaPieza}>Insertar Nueva Pieza</button>
 
-        <div className="col-4 d-flex justify-content-center">
-          <div id="panel" className="p-5">
-            <div className="fila d-flex justify-content-center">
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-            </div>
-            <div className="fila d-flex justify-content-center">
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-              <div className="celda bg-dark border-secondary">x</div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-4 d-flex flex-column justify-content-start align-items-center p-5">
-          <div id="piezaSiguiente">
-            <h4>Pieza siguiente:</h4>
-            <div className="piezaSiguiente m-2">
-              <div className="fila d-flex justify-content-center">
-                <div className="celda bg-primary bg-gradient border-dark">x</div>
-                <div className="celda bg-dark border-secondary">x</div>
-              </div>
-              <div className="fila d-flex justify-content-center">
-                <div className="celda bg-primary bg-gradient border-dark">x</div>
-                <div className="celda bg-dark border-secondary">x</div>
-              </div>
-              <div className="fila d-flex justify-content-center">
-                <div className="celda bg-primary bg-gradient border-dark">x</div>
-                <div className="celda bg-primary bg-gradient border-dark">x</div>
-              </div>
-            </div>
-          </div>
-          <hr />
-          <div id="piezaGuardada">
-            <h4>Pieza guardada:</h4>
-            <div className="piezaGuardada">
-              <div className="piezaSiguiente m-2">
-                <div className="fila d-flex justify-content-center">
-                  <div className="celda bg-warning bg-gradient border-dark">x</div>
-                  <div className="celda bg-warning border-secondary">x</div>
-                </div>
-                <div className="fila d-flex justify-content-center">
-                  <div className="celda bg-warning bg-gradient border-dark">x</div>
-                  <div className="celda bg-warning border-secondary">x</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
     </div>
   );
-}
+};
 
-export default VistaJuego;
+export default Juego;
