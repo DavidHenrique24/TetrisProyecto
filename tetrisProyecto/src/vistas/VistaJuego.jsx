@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { nuevaPieza } from "../lib/nuevaPieza";  // Importar nuevaPieza
 import Panel from "../componentes/Panel";
-import Pieza from "../componentes/Pieza";
 import { modelos } from "../lib/modelos";  
 
 const Juego = () => {
@@ -11,7 +10,6 @@ const Juego = () => {
   // Función para generar una columna aleatoria dentro del rango permitido
   const generarColumnaAleatoria = () => {
     const columnaAleatoria = Math.floor(Math.random() * 8) + 1; 
-    
     return columnaAleatoria;
   };
 
@@ -42,14 +40,55 @@ const Juego = () => {
     pintarPieza();  // Insertar la pieza en el panel
   };
 
+  // Funciones de movimiento que solo muestran un mensaje por consola
+  const moverDra = () => {
+    console.log("Mover pieza a la derecha");
+  };
+
+  const moverIzq = () => {
+    console.log("Mover pieza a la izquierda");
+  };
+
+  const bajar = () => {
+    console.log("Bajar pieza");
+  };
+
+  const girar = () => {
+    console.log("Girar pieza");
+  };
+
+  // Función para controlar las teclas
+  const controlTeclas = (event) => {
+    switch (event.key) {
+      case "ArrowRight":
+        moverDra();
+        break;
+      case "ArrowLeft":
+        moverIzq();
+        break;
+      case "ArrowDown":
+        bajar();
+        break;
+      case "ArrowUp":
+        girar();
+        break;
+      default:
+        break;
+    }
+  };
+
+  // Añadir el event listener para las teclas
+  useEffect(() => {
+    window.addEventListener("keydown", controlTeclas);
+    return () => {
+      window.removeEventListener("keydown", controlTeclas);
+    };
+  }, []);
+
   return (
     <div className="d-flex flex-column justify-content-between align-items-center">
       <Panel arrayCasillas={arrayCasillas} />
-
-      {/* Botón para insertar la nueva pieza */}
       <button onClick={insertaNuevaPieza}>Insertar Nueva Pieza</button>
-
-    
     </div>
   );
 };
