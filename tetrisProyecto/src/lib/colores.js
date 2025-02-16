@@ -7,7 +7,7 @@ export function colorPieza(numero) {
       "bg-danger",
       "bg-warning",
       "bg-info",
-      "bg-secondary",
+      "bg-warning ",
       "bg-success"
     ];
 
